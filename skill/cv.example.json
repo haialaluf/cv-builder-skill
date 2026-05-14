@@ -1,0 +1,119 @@
+{
+  "name": "Maya Chen",
+  "headline": "Senior Product Engineer — full-stack & platform",
+  "summary": "Product-minded engineer with 8 years building consumer and developer-facing software at startups (Series A–C). Comfortable owning a feature end-to-end — from user research and API design through deployment and post-launch metrics. Looking for a role where I can keep shipping product but also help shape the engineering culture as the team scales.",
+
+  "contact": [
+    { "name": "+972 50 123 4567",  "icon": "phone" },
+    { "name": "maya@example.com",  "icon": "email",    "link": "mailto:maya@example.com" },
+    { "name": "Tel Aviv, IL",      "icon": "location" },
+    { "name": "mayachen.dev",      "icon": "website",  "link": "https://mayachen.dev" },
+    { "name": "/in/mayachen",      "icon": "linkedin", "link": "https://linkedin.com/in/mayachen" },
+    { "name": "@mayachen",         "icon": "github",   "link": "https://github.com/mayachen" }
+  ],
+
+  "experience": [
+    {
+      "title": "Senior Product Engineer",
+      "company": "Lumen Health",
+      "url": "https://lumenhealth.example.com",
+      "location": "Tel Aviv (hybrid)",
+      "startDate": "2023",
+      "endDate": "Present",
+      "tagline": "Owned the booking flow end-to-end; helped scale the team from 6 to 14 engineers.",
+      "bullets": [
+        "Led the rewrite of the booking flow from a legacy Rails monolith to a <strong>Next.js + tRPC</strong> stack — cut booking-completion time by 38% and reduced support tickets by ~60%.",
+        "Designed and shipped a real-time clinician-presence system using <strong>Postgres LISTEN/NOTIFY</strong> and SSE, replacing a brittle polling layer that was hitting RDS hard.",
+        "Mentored two mid-level engineers through promotion; wrote the team's first code-review guide and ran weekly architecture reviews.",
+        "Drove HIPAA-style data partitioning across services as the company expanded from one country to four."
+      ],
+      "tech": ["TypeScript", "Next.js", "tRPC", "PostgreSQL", "Prisma", "Redis", "AWS", "Datadog"]
+    },
+    {
+      "title": "Full-stack Engineer",
+      "company": "Stellate",
+      "url": "https://stellate.co",
+      "location": "Remote",
+      "startDate": "2020",
+      "endDate": "2023",
+      "bullets": [
+        "Built the customer dashboard from scratch (<strong>React, GraphQL, Tailwind</strong>) — became the primary surface for 800+ paying teams.",
+        "Owned the <strong>Stripe billing integration</strong> including metered usage, proration, and a self-serve plan-switching flow that eliminated ~10 hrs/week of finance manual work.",
+        "Wrote the company's first incident playbook after a 4-hour edge outage; ran post-mortems for the following year.",
+        "Shipped public-facing GraphQL analytics, cited in two of the top three closed-won deals of FY22."
+      ],
+      "tech": ["TypeScript", "React", "GraphQL", "Node.js", "Stripe", "Cloudflare Workers"]
+    },
+    {
+      "title": "Software Engineer",
+      "company": "Riverside.fm",
+      "url": "https://riverside.fm",
+      "location": "Tel Aviv",
+      "startDate": "2018",
+      "endDate": "2020",
+      "bullets": [
+        "Implemented <strong>client-side local recording with progressive upload</strong> — the core differentiating feature of the product — using WebRTC, MediaRecorder, and S3 multipart.",
+        "Reduced average upload-completion latency from ~14 min to under 3 min by parallelizing chunk uploads and adding exponential-backoff retry.",
+        "Co-designed the company's first observability stack on a self-hosted ELK + Prometheus setup."
+      ],
+      "tech": ["JavaScript", "WebRTC", "Node.js", "AWS S3", "Lambda", "ELK"]
+    }
+  ],
+
+  "education": [
+    {
+      "degree": "B.Sc. Computer Science",
+      "school": "Tel Aviv University",
+      "startDate": "2014",
+      "endDate": "2018",
+      "note": "Magna cum laude. Thesis on CRDTs for collaborative editing."
+    }
+  ],
+
+  "skills": [
+    "TypeScript / JS",
+    "React / Next.js",
+    "Node.js / tRPC",
+    "PostgreSQL / SQL",
+    "GraphQL",
+    "System design",
+    "AWS / Cloud infra",
+    "Python"
+  ],
+
+  "languages": [
+    { "name": "English", "level": "Native" },
+    { "name": "Hebrew", "level": "Native" },
+    { "name": "Mandarin", "level": "Conversational" }
+  ],
+
+  "projects": [
+    {
+      "title": "tinyqueue",
+      "description": "Open-source TypeScript priority queue. 1.2k GitHub stars. Used in production at three companies.",
+      "startDate": "2022",
+      "endDate": "now"
+    },
+    {
+      "title": "\"Caching GraphQL at the edge\"",
+      "description": "Talk at GraphQL Conf Berlin.",
+      "startDate": "2022"
+    }
+  ],
+
+  "certifications": [
+    {
+      "name": "AWS Solutions Architect — Associate",
+      "issuer": "Amazon Web Services",
+      "date": "2023"
+    }
+  ],
+
+  "awards": [
+    {
+      "name": "Stellate Engineering Impact Award",
+      "issuer": "Stellate",
+      "date": "2022"
+    }
+  ]
+}

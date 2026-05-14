@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Maya Chen — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-soft: #3a3a3a;
+    --ink-mute: #6b6b6b;
+    --rule: #cfd5dc;
+    --accent: #3b6db8;
+    --accent-soft: #8aa6cf;
+    --page-bg: #ffffff;
+    --sans: "Inter", system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #e8e6e0; }
+  body { font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 24px auto;
+    background: var(--page-bg);
+    box-shadow: 0 6px 28px rgba(0,0,0,0.10);
+    padding: 11mm 13mm 11mm;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    row-gap: 5mm;
+  }
+
+  /* ============ HEADER ============ */
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    column-gap: 10mm;
+  }
+  .name-block { display: grid; gap: 4px; }
+  .name {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 30pt;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: var(--accent);
+    margin: 0;
+  }
+  .headline {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 12pt;
+    color: var(--ink-soft);
+    margin: 2px 0 0;
+  }
+
+  .socials {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+    margin-bottom: 3mm;
+  }
+  .socials a, .socials .item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+  .socials a:hover { color: var(--accent); }
+  .socials svg { width: 16px; height: 16px; }
+
+  .primary-contact {
+    display: grid;
+    gap: 5px;
+    justify-items: end;
+    font-size: 9.5pt;
+    color: var(--ink-soft);
+  }
+  .primary-contact .row,
+  .primary-contact a.row {
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    gap: 8px;
+    align-items: center;
+    color: inherit;
+    text-decoration: none;
+  }
+  .primary-contact .icon {
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+  }
+  .primary-contact .icon svg { width: 12px; height: 12px; }
+  .primary-contact a.row:hover .label { text-decoration: underline; }
+
+  /* ============ SUMMARY (full width) ============ */
+  .summary-block {
+    border-top: 1px solid var(--rule);
+    padding-top: 5mm;
+  }
+  .summary-text {
+    font-family: var(--sans);
+    font-size: 10pt;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+    text-align: justify;
+  }
+
+  /* ============ TWO-COLUMN BODY ============ */
+  .body {
+    display: grid;
+    grid-template-columns: 60mm 1fr;
+    column-gap: 9mm;
+    position: relative;
+    padding-top: 5mm;
+  }
+  .body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(60mm + 4.5mm);
+    width: 1px;
+    background: var(--rule);
+  }
+
+  h2 {
+    font-family: var(--sans);
+    font-size: 11pt;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0 0 8px;
+  }
+
+  section { margin-bottom: 12px; }
+  section:last-child { margin-bottom: 0; }
+
+  /* sidebar */
+  .sidebar .edu-list { display: grid; gap: 10px; font-size: 9.5pt; }
+  .sidebar .edu-item { display: grid; gap: 1px; }
+  .sidebar .edu-item .date { color: var(--ink-mute); font-size: 9pt; font-variant-numeric: tabular-nums; }
+  .sidebar .edu-item .school { color: var(--ink); font-weight: 600; }
+  .sidebar .edu-item .degree { color: var(--ink-soft); }
+  .sidebar .edu-item .note { color: var(--ink-mute); font-style: italic; font-size: 9pt; }
+
+  .sidebar .skills-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 5px;
+    font-size: 9.5pt;
+    color: var(--ink-soft);
+  }
+  .sidebar .skills-list li {
+    position: relative;
+    padding-left: 12px;
+  }
+  .sidebar .skills-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .sidebar .lang-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 5px;
+    font-size: 9.5pt;
+    color: var(--ink-soft);
+  }
+  .sidebar .lang-list li {
+    position: relative;
+    padding-left: 12px;
+  }
+  .sidebar .lang-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .sidebar .lang-list .level { color: var(--ink-mute); font-size: 8.5pt; }
+
+  .sidebar .cert-list { display: grid; gap: 8px; font-size: 9.5pt; }
+  .sidebar .cert-item { display: grid; gap: 1px; }
+  .sidebar .cert-item .cert-name { color: var(--ink); font-weight: 600; }
+  .sidebar .cert-item .cert-issuer { color: var(--ink-soft); }
+  .sidebar .cert-item .cert-date { color: var(--ink-mute); font-size: 9pt; font-variant-numeric: tabular-nums; }
+  .sidebar .cert-item a { color: inherit; text-decoration: none; }
+
+  .sidebar .award-list { display: grid; gap: 8px; font-size: 9.5pt; }
+  .sidebar .award-item .award-name { color: var(--ink); font-weight: 600; }
+  .sidebar .award-item .award-meta { color: var(--ink-mute); font-size: 9pt; display: block; }
+
+  /* main column */
+  .role {
+    margin-bottom: 10px;
+    page-break-inside: avoid;
+  }
+  .role:last-child { margin-bottom: 0; }
+  .role-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 2px;
+  }
+  .role-title-line {
+    font-size: 10.5pt;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .role-title-line .title { font-weight: 700; }
+  .role-title-line .sep { color: var(--ink-mute); margin: 0 6px; }
+  .role-title-line .company { color: var(--ink); font-weight: 600; }
+  .role-title-line a.company {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 0.5px;
+    text-underline-offset: 2px;
+  }
+  .role-title-line .location { color: var(--ink-mute); font-weight: 400; font-size: 9.5pt; }
+  .role-dates {
+    font-family: var(--sans);
+    font-size: 9pt;
+    font-weight: 500;
+    color: var(--ink-mute);
+    text-align: right;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .role-tagline {
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 9.5pt;
+    color: var(--ink-soft);
+    margin: 2px 0 4px;
+    line-height: 1.4;
+  }
+
+  ul.bullets {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0;
+    display: grid;
+    gap: 3px;
+    font-size: 9.5pt;
+    line-height: 1.5;
+  }
+  ul.bullets li {
+    position: relative;
+    padding-left: 14px;
+    color: var(--ink-soft);
+  }
+  ul.bullets li::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 0.55em;
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  ul.bullets li strong { color: var(--ink); font-weight: 600; }
+
+  .role-tech {
+    margin-top: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .role-tech .tag {
+    padding: 1px 8px;
+    border: 0.5px solid var(--rule);
+    background: #fff;
+    color: var(--ink-soft);
+    border-radius: 100px;
+    font-size: 8.5pt;
+  }
+
+  .project {
+    margin-bottom: 9px;
+    page-break-inside: avoid;
+  }
+  .project:last-child { margin-bottom: 0; }
+  .project .row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .project .title { font-size: 10pt; font-weight: 600; color: var(--ink); margin: 0; }
+  .project .date {
+    font-size: 9pt;
+    color: var(--ink-mute);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .project .desc { font-size: 9.5pt; line-height: 1.5; color: var(--ink-soft); margin: 2px 0 0; }
+  .project .desc strong { color: var(--ink); font-weight: 600; }
+
+  @page { size: A4; margin: 0; }
+  @media print {
+    html, body { background: white; }
+    .page {
+      width: auto;
+      min-height: 0;
+      margin: 0;
+      box-shadow: none;
+      display: block;
+    }
+    .body { break-inside: auto; }
+    .role { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="name-block">
+      <h1 class="name">Maya Chen</h1>
+      <p class="headline">Senior Product Engineer - full-stack &amp; platform</p>
+      
+      <div class="socials">
+        
+        <a href="https://linkedin.com/in/mayachen" title="/in/mayachen"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43c-1.14 0-2.07-.93-2.07-2.07s.93-2.07 2.07-2.07c1.14 0 2.07.93 2.07 2.07s-.93 2.07-2.07 2.07zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.55C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.73C24 .77 23.2 0 22.22 0z"/></svg></a>
+        
+        
+        <a href="https://github.com/mayachen" title="@mayachen"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .3a12 12 0 0 0-3.79 23.4c.6.1.82-.26.82-.57v-2.05c-3.34.72-4.05-1.6-4.05-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.1-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.08 1.84 2.81 1.3 3.5 1 .1-.78.42-1.3.77-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.1-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.65 1.66.24 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.8 5.63-5.48 5.92.43.37.81 1.1.81 2.22v3.29c0 .31.21.69.82.57A12 12 0 0 0 12 .3"/></svg></a>
+        
+        
+      </div>
+      
+    </div>
+    
+    <div class="primary-contact">
+      
+      
+      
+      <div class="row">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg></span>
+        <span class="label">+972 50 123 4567</span>
+      </div>
+      
+      
+      
+      <a class="row" href="mailto:maya@example.com">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+        <span class="label">maya@example.com</span>
+      </a>
+      
+      
+      
+      
+      
+      <div class="row">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <span class="label">Tel Aviv, IL</span>
+      </div>
+      
+      
+      
+      <a class="row" href="https://mayachen.dev">
+        <span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+        <span class="label">mayachen.dev</span>
+      </a>
+      
+      
+      
+    </div>
+    
+  </header>
+
+  
+  <div class="summary-block">
+    <p class="summary-text">Product-minded engineer with 8 years building consumer and developer-facing software at startups (Series A - C). Comfortable owning a feature end-to-end - from user research and API design through deployment and post-launch metrics. Looking for a role where I can keep shipping product but also help shape the engineering culture as the team scales.</p>
+  </div>
+  
+
+  <div class="body">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar">
+      
+      <section>
+        <h2>Education</h2>
+        <div class="edu-list">
+          
+          <div class="edu-item">
+            <span class="date">2014 — 2018</span>
+            <span class="school">Tel Aviv University</span>
+            <span class="degree">B.Sc. Computer Science</span>
+            <span class="note">Magna cum laude. Thesis on CRDTs for collaborative editing.</span>
+          </div>
+          
+        </div>
+      </section>
+      
+
+      
+      <section>
+        <h2>Skills</h2>
+        <ul class="skills-list">
+          <li>TypeScript / JS</li><li>React / Next.js</li><li>Node.js / tRPC</li><li>PostgreSQL / SQL</li><li>GraphQL</li><li>System design</li><li>AWS / Cloud infra</li><li>Python</li>
+        </ul>
+      </section>
+      
+
+      
+      <section>
+        <h2>Languages</h2>
+        <ul class="lang-list">
+          
+          <li>English <span class="level">(Native)</span></li>
+          
+          <li>Hebrew <span class="level">(Native)</span></li>
+          
+          <li>Mandarin <span class="level">(Conversational)</span></li>
+          
+        </ul>
+      </section>
+      
+
+      
+      <section>
+        <h2>Certifications</h2>
+        <div class="cert-list">
+          
+          <div class="cert-item">
+            <span class="cert-name">
+              
+              AWS Solutions Architect - Associate
+            </span>
+            <span class="cert-issuer">Amazon Web Services</span>
+            <span class="cert-date">2023</span>
+          </div>
+          
+        </div>
+      </section>
+      
+
+      
+      <section>
+        <h2>Awards</h2>
+        <div class="award-list">
+          
+          <div class="award-item">
+            <span class="award-name">Stellate Engineering Impact Award</span>
+            <span class="award-meta">Stellate · 2022</span>
+          </div>
+          
+        </div>
+      </section>
+      
+    </div>
+
+    <!-- RIGHT MAIN -->
+    <div class="main">
+      
+      <section>
+        <h2>Work Experience</h2>
+        
+        <div class="role">
+          <div class="role-head">
+            <div class="role-title-line">
+              <span class="title">Senior Product Engineer</span>
+              <span class="sep">—</span>
+              <a class="company" href="https://lumenhealth.example.com">Lumen Health</a>
+              
+               <span class="location">· Tel Aviv (hybrid)</span>
+            </div>
+            <div class="role-dates">2023 — Present</div>
+          </div>
+          <p class="role-tagline">Owned the booking flow end-to-end; helped scale the team from 6 to 14 engineers.</p>
+          
+          <ul class="bullets">
+            <li>Led the rewrite of the booking flow from a legacy Rails monolith to a <strong>Next.js + tRPC</strong> stack - cut booking-completion time by 38% and reduced support tickets by ~60%.</li><li>Designed and shipped a real-time clinician-presence system using <strong>Postgres LISTEN/NOTIFY</strong> and SSE, replacing a brittle polling layer that was hitting RDS hard.</li><li>Mentored two mid-level engineers through promotion; wrote the team's first code-review guide and ran weekly architecture reviews.</li><li>Drove HIPAA-style data partitioning across services as the company expanded from one country to four.</li>
+          </ul>
+          
+          
+          <div class="role-tech">
+            <span class="tag">TypeScript</span><span class="tag">Next.js</span><span class="tag">tRPC</span><span class="tag">PostgreSQL</span><span class="tag">Prisma</span><span class="tag">Redis</span><span class="tag">AWS</span><span class="tag">Datadog</span>
+          </div>
+          
+        </div>
+        
+        <div class="role">
+          <div class="role-head">
+            <div class="role-title-line">
+              <span class="title">Full-stack Engineer</span>
+              <span class="sep">—</span>
+              <a class="company" href="https://stellate.co">Stellate</a>
+              
+               <span class="location">· Remote</span>
+            </div>
+            <div class="role-dates">2020 — 2023</div>
+          </div>
+          
+          
+          <ul class="bullets">
+            <li>Built the customer dashboard from scratch (<strong>React, GraphQL, Tailwind</strong>) - became the primary surface for 800+ paying teams.</li><li>Owned the <strong>Stripe billing integration</strong> including metered usage, proration, and a self-serve plan-switching flow that eliminated ~10 hrs/week of finance manual work.</li><li>Wrote the company's first incident playbook after a 4-hour edge outage; ran post-mortems for the following year.</li><li>Shipped public-facing GraphQL analytics, cited in two of the top three closed-won deals of FY22.</li>
+          </ul>
+          
+          
+          <div class="role-tech">
+            <span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">GraphQL</span><span class="tag">Node.js</span><span class="tag">Stripe</span><span class="tag">Cloudflare Workers</span>
+          </div>
+          
+        </div>
+        
+        <div class="role">
+          <div class="role-head">
+            <div class="role-title-line">
+              <span class="title">Software Engineer</span>
+              <span class="sep">—</span>
+              <a class="company" href="https://riverside.fm">Riverside.fm</a>
+              
+               <span class="location">· Tel Aviv</span>
+            </div>
+            <div class="role-dates">2018 — 2020</div>
+          </div>
+          
+          
+          <ul class="bullets">
+            <li>Implemented <strong>client-side local recording with progressive upload</strong> - the core differentiating feature of the product - using WebRTC, MediaRecorder, and S3 multipart.</li><li>Reduced average upload-completion latency from ~14 min to under 3 min by parallelizing chunk uploads and adding exponential-backoff retry.</li><li>Co-designed the company's first observability stack on a self-hosted ELK + Prometheus setup.</li>
+          </ul>
+          
+          
+          <div class="role-tech">
+            <span class="tag">JavaScript</span><span class="tag">WebRTC</span><span class="tag">Node.js</span><span class="tag">AWS S3</span><span class="tag">Lambda</span><span class="tag">ELK</span>
+          </div>
+          
+        </div>
+        
+      </section>
+      
+
+      
+      <section>
+        <h2>Projects &amp; Talks</h2>
+        
+        <div class="project">
+          <div class="row">
+            <h4 class="title">tinyqueue</h4>
+            <span class="date">2022 — now</span>
+          </div>
+          <p class="desc">Open-source TypeScript priority queue. 1.2k GitHub stars. Used in production at three companies.</p>
+        </div>
+        
+        <div class="project">
+          <div class="row">
+            <h4 class="title">&quot;Caching GraphQL at the edge&quot;</h4>
+            <span class="date">2022</span>
+          </div>
+          <p class="desc">Talk at GraphQL Conf Berlin.</p>
+        </div>
+        
+      </section>
+      
+    </div>
+  </div>
+</div>
+</body>
+</html>

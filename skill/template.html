@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{{name}} — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1a1a;
+    --ink-soft: #3a3a3a;
+    --ink-mute: #6b6b6b;
+    --rule: #cfd5dc;
+    --accent: #3b6db8;
+    --accent-soft: #8aa6cf;
+    --page-bg: #ffffff;
+    --sans: "Inter", system-ui, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #e8e6e0; }
+  body { font-family: var(--sans); color: var(--ink); -webkit-font-smoothing: antialiased; }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 24px auto;
+    background: var(--page-bg);
+    box-shadow: 0 6px 28px rgba(0,0,0,0.10);
+    padding: 11mm 13mm 11mm;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    row-gap: 5mm;
+  }
+
+  /* ============ HEADER ============ */
+  header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    column-gap: 10mm;
+  }
+  .name-block { display: grid; gap: 4px; }
+  .name {
+    font-family: var(--sans);
+    font-weight: 800;
+    font-size: 30pt;
+    letter-spacing: -0.01em;
+    line-height: 1;
+    color: var(--accent);
+    margin: 0;
+  }
+  .headline {
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 12pt;
+    color: var(--ink-soft);
+    margin: 2px 0 0;
+  }
+
+  .socials {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+    margin-bottom: 3mm;
+  }
+  .socials a, .socials .item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+  .socials a:hover { color: var(--accent); }
+  .socials svg { width: 16px; height: 16px; }
+
+  .primary-contact {
+    display: grid;
+    gap: 5px;
+    justify-items: end;
+    font-size: 9.5pt;
+    color: var(--ink-soft);
+  }
+  .primary-contact .row,
+  .primary-contact a.row {
+    display: inline-grid;
+    grid-template-columns: auto auto;
+    gap: 8px;
+    align-items: center;
+    color: inherit;
+    text-decoration: none;
+  }
+  .primary-contact .icon {
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+  }
+  .primary-contact .icon svg { width: 12px; height: 12px; }
+  .primary-contact a.row:hover .label { text-decoration: underline; }
+
+  /* ============ SUMMARY (full width) ============ */
+  .summary-block {
+    border-top: 1px solid var(--rule);
+    padding-top: 5mm;
+  }
+  .summary-text {
+    font-family: var(--sans);
+    font-size: 10pt;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0;
+    text-align: justify;
+  }
+
+  /* ============ TWO-COLUMN BODY ============ */
+  .body {
+    display: grid;
+    grid-template-columns: 60mm 1fr;
+    column-gap: 9mm;
+    position: relative;
+    padding-top: 5mm;
+  }
+  .body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(60mm + 4.5mm);
+    width: 1px;
+    background: var(--rule);
+  }
+
+  h2 {
+    font-family: var(--sans);
+    font-size: 11pt;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0 0 8px;
+  }
+
+  section { margin-bottom: 12px; }
+  section:last-child { margin-bottom: 0; }
+
+  /* sidebar */
+  .sidebar .edu-list { display: grid; gap: 10px; font-size: 9.5pt; }
+  .sidebar .edu-item { display: grid; gap: 1px; }
+  .sidebar .edu-item .date { color: var(--ink-mute); font-size: 9pt; font-variant-numeric: tabular-nums; }
+  .sidebar .edu-item .school { color: var(--ink); font-weight: 600; }
+  .sidebar .edu-item .degree { color: var(--ink-soft); }
+  .sidebar .edu-item .note { color: var(--ink-mute); font-style: italic; font-size: 9pt; }
+
+  .sidebar .skills-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 5px;
+    font-size: 9.5pt;
+    color: var(--ink-soft);
+  }
+  .sidebar .skills-list li {
+    position: relative;
+    padding-left: 12px;
+  }
+  .sidebar .skills-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .sidebar .lang-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 5px;
+    font-size: 9.5pt;
+    color: var(--ink-soft);
+  }
+  .sidebar .lang-list li {
+    position: relative;
+    padding-left: 12px;
+  }
+  .sidebar .lang-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .sidebar .lang-list .level { color: var(--ink-mute); font-size: 8.5pt; }
+
+  .sidebar .cert-list { display: grid; gap: 8px; font-size: 9.5pt; }
+  .sidebar .cert-item { display: grid; gap: 1px; }
+  .sidebar .cert-item .cert-name { color: var(--ink); font-weight: 600; }
+  .sidebar .cert-item .cert-issuer { color: var(--ink-soft); }
+  .sidebar .cert-item .cert-date { color: var(--ink-mute); font-size: 9pt; font-variant-numeric: tabular-nums; }
+  .sidebar .cert-item a { color: inherit; text-decoration: none; }
+
+  .sidebar .award-list { display: grid; gap: 8px; font-size: 9.5pt; }
+  .sidebar .award-item .award-name { color: var(--ink); font-weight: 600; }
+  .sidebar .award-item .award-meta { color: var(--ink-mute); font-size: 9pt; display: block; }
+
+  /* main column */
+  .role {
+    margin-bottom: 10px;
+    page-break-inside: avoid;
+  }
+  .role:last-child { margin-bottom: 0; }
+  .role-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 2px;
+  }
+  .role-title-line {
+    font-size: 10.5pt;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+  .role-title-line .title { font-weight: 700; }
+  .role-title-line .sep { color: var(--ink-mute); margin: 0 6px; }
+  .role-title-line .company { color: var(--ink); font-weight: 600; }
+  .role-title-line a.company {
+    color: var(--accent);
+    text-decoration: underline;
+    text-decoration-thickness: 0.5px;
+    text-underline-offset: 2px;
+  }
+  .role-title-line .location { color: var(--ink-mute); font-weight: 400; font-size: 9.5pt; }
+  .role-dates {
+    font-family: var(--sans);
+    font-size: 9pt;
+    font-weight: 500;
+    color: var(--ink-mute);
+    text-align: right;
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
+  }
+  .role-tagline {
+    font-family: var(--sans);
+    font-style: italic;
+    font-size: 9.5pt;
+    color: var(--ink-soft);
+    margin: 2px 0 4px;
+    line-height: 1.4;
+  }
+
+  ul.bullets {
+    list-style: none;
+    padding: 0;
+    margin: 4px 0 0;
+    display: grid;
+    gap: 3px;
+    font-size: 9.5pt;
+    line-height: 1.5;
+  }
+  ul.bullets li {
+    position: relative;
+    padding-left: 14px;
+    color: var(--ink-soft);
+  }
+  ul.bullets li::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    top: 0.55em;
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  ul.bullets li strong { color: var(--ink); font-weight: 600; }
+
+  .role-tech {
+    margin-top: 6px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .role-tech .tag {
+    padding: 1px 8px;
+    border: 0.5px solid var(--rule);
+    background: #fff;
+    color: var(--ink-soft);
+    border-radius: 100px;
+    font-size: 8.5pt;
+  }
+
+  .project {
+    margin-bottom: 9px;
+    page-break-inside: avoid;
+  }
+  .project:last-child { margin-bottom: 0; }
+  .project .row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    gap: 10px;
+  }
+  .project .title { font-size: 10pt; font-weight: 600; color: var(--ink); margin: 0; }
+  .project .date {
+    font-size: 9pt;
+    color: var(--ink-mute);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+  .project .desc { font-size: 9.5pt; line-height: 1.5; color: var(--ink-soft); margin: 2px 0 0; }
+  .project .desc strong { color: var(--ink); font-weight: 600; }
+
+  @page { size: A4; margin: 0; }
+  @media print {
+    html, body { background: white; }
+    .page {
+      width: auto;
+      min-height: 0;
+      margin: 0;
+      box-shadow: none;
+      display: block;
+    }
+    .body { break-inside: auto; }
+    .role { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="name-block">
+      <h1 class="name">{{name}}</h1>
+      {{#if headline}}<p class="headline">{{headline}}</p>{{/if}}
+      {{#if _socialContact}}
+      <div class="socials">
+        {{#each _socialContact}}
+        {{#if link}}<a href="{{link}}" title="{{name}}">{{{_iconSvg}}}</a>{{/if}}
+        {{#unless link}}<span class="item" title="{{name}}">{{{_iconSvg}}}</span>{{/unless}}
+        {{/each}}
+      </div>
+      {{/if}}
+    </div>
+    {{#if _primaryContact}}
+    <div class="primary-contact">
+      {{#each _primaryContact}}
+      {{#if link}}
+      <a class="row" href="{{link}}">
+        <span class="icon">{{{_iconSvg}}}</span>
+        <span class="label">{{name}}</span>
+      </a>
+      {{/if}}
+      {{#unless link}}
+      <div class="row">
+        <span class="icon">{{{_iconSvg}}}</span>
+        <span class="label">{{name}}</span>
+      </div>
+      {{/unless}}
+      {{/each}}
+    </div>
+    {{/if}}
+  </header>
+
+  {{#if summary}}
+  <div class="summary-block">
+    <p class="summary-text">{{summary}}</p>
+  </div>
+  {{/if}}
+
+  <div class="body">
+
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar">
+      {{#if education}}
+      <section>
+        <h2>Education</h2>
+        <div class="edu-list">
+          {{#each education}}
+          <div class="edu-item">
+            <span class="date">{{startDate}} — {{endDate}}</span>
+            <span class="school">{{school}}</span>
+            <span class="degree">{{degree}}</span>
+            {{#if note}}<span class="note">{{note}}</span>{{/if}}
+          </div>
+          {{/each}}
+        </div>
+      </section>
+      {{/if}}
+
+      {{#if skills}}
+      <section>
+        <h2>Skills</h2>
+        <ul class="skills-list">
+          {{#each skills}}<li>{{this}}</li>{{/each}}
+        </ul>
+      </section>
+      {{/if}}
+
+      {{#if languages}}
+      <section>
+        <h2>Languages</h2>
+        <ul class="lang-list">
+          {{#each languages}}
+          <li>{{name}} <span class="level">({{level}})</span></li>
+          {{/each}}
+        </ul>
+      </section>
+      {{/if}}
+
+      {{#if certifications}}
+      <section>
+        <h2>Certifications</h2>
+        <div class="cert-list">
+          {{#each certifications}}
+          <div class="cert-item">
+            <span class="cert-name">
+              {{#if link}}<a href="{{link}}">{{name}}</a>{{/if}}
+              {{#unless link}}{{name}}{{/unless}}
+            </span>
+            <span class="cert-issuer">{{issuer}}</span>
+            {{#if date}}<span class="cert-date">{{date}}</span>{{/if}}
+          </div>
+          {{/each}}
+        </div>
+      </section>
+      {{/if}}
+
+      {{#if awards}}
+      <section>
+        <h2>Awards</h2>
+        <div class="award-list">
+          {{#each awards}}
+          <div class="award-item">
+            <span class="award-name">{{name}}</span>
+            <span class="award-meta">{{#if issuer}}{{issuer}}{{/if}}{{#if date}}{{#if issuer}} · {{/if}}{{date}}{{/if}}</span>
+          </div>
+          {{/each}}
+        </div>
+      </section>
+      {{/if}}
+    </div>
+
+    <!-- RIGHT MAIN -->
+    <div class="main">
+      {{#if experience}}
+      <section>
+        <h2>Work Experience</h2>
+        {{#each experience}}
+        <div class="role">
+          <div class="role-head">
+            <div class="role-title-line">
+              <span class="title">{{title}}</span>
+              <span class="sep">—</span>
+              {{#if url}}<a class="company" href="{{url}}">{{company}}</a>{{/if}}
+              {{#unless url}}<span class="company">{{company}}</span>{{/unless}}
+              {{#if location}} <span class="location">· {{location}}</span>{{/if}}
+            </div>
+            <div class="role-dates">{{startDate}} — {{endDate}}</div>
+          </div>
+          {{#if tagline}}<p class="role-tagline">{{tagline}}</p>{{/if}}
+          {{#if bullets}}
+          <ul class="bullets">
+            {{#each bullets}}<li>{{{this}}}</li>{{/each}}
+          </ul>
+          {{/if}}
+          {{#if tech}}
+          <div class="role-tech">
+            {{#each tech}}<span class="tag">{{this}}</span>{{/each}}
+          </div>
+          {{/if}}
+        </div>
+        {{/each}}
+      </section>
+      {{/if}}
+
+      {{#if projects}}
+      <section>
+        <h2>Projects &amp; Talks</h2>
+        {{#each projects}}
+        <div class="project">
+          <div class="row">
+            <h4 class="title">{{title}}</h4>
+            <span class="date">{{startDate}}{{#if endDate}} — {{endDate}}{{/if}}</span>
+          </div>
+          <p class="desc">{{description}}</p>
+        </div>
+        {{/each}}
+      </section>
+      {{/if}}
+    </div>
+  </div>
+</div>
+</body>
+</html>
