@@ -60,16 +60,16 @@ Edits in the repo are picked up live, so you can hack on the skill and use it at
 the same time.
 
 ```bash
-git clone https://github.com/haialaluf/cv-builder.git
-cd cv-builder
+git clone https://github.com/haialaluf/cv-builder-skill.git
+cd cv-builder-skill
 ln -s "$(pwd)/skill" ~/.claude/skills/cv-builder
 ```
 
 ### Option B — copy
 
 ```bash
-git clone https://github.com/haialaluf/cv-builder.git
-cp -r cv-builder/skill ~/.claude/skills/cv-builder
+git clone https://github.com/haialaluf/cv-builder-skill.git
+cp -r cv-builder-skill/skill ~/.claude/skills/cv-builder
 ```
 
 ### Verify
